@@ -1,0 +1,17 @@
+<hello name="{{ name }}"></hello>
+<p>Start editing to see some magic happen :)</p>
+
+<div [style.position]="'relative'">
+  <div [@filterAnimation]="value">
+    <div *ngFor="let value of [value]">{{ value }}</div>
+  </div>
+  <!-- <div [@valueUpdated]="value">
+  <div *ngFor="let value of [ value ]">{{ value }}</div>
+</div> -->
+  <!-- <div [@filterAnimation2]="value">
+  <div *ngFor="let value of [ value ]">{{ value }}</div>
+</div> -->
+</div>
+
+<button (click)="value = value + 1">Increment</button>
+<button (click)="value = value - 1">Decrement</button>

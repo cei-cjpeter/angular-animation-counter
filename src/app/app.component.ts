@@ -15,18 +15,18 @@ export const DEFAULT_ANIMATION_PERIOD = '1.5s ease-out';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   animations: [
-    trigger('filterAnimation', [
+    trigger('counterAnimation', [
       // transition(':enter, * => 0, * => -1', []),
       transition(':increment', [
         group([
           query(
             ':enter',
             [
-              style({ opacity: 0, transform: 'translateY(100%)' }),
+              style({ opacity: 0, transform: 'translateY(100%) scale(.5)' }),
               // stagger(50, [
               animate(
                 '200ms ease-out',
-                style({ opacity: 1, transform: 'translateY(0%)' })
+                style({ opacity: 1, transform: 'translateY(0%) scale(1)' })
               ),
               // ]),
             ],
@@ -38,12 +38,12 @@ export const DEFAULT_ANIMATION_PERIOD = '1.5s ease-out';
               // stagger(50, [
               style({
                 opacity: 1,
-                transform: 'translateY(0%)',
+                transform: 'translateY(0%) scale(1)',
                 position: 'absolute',
               }),
               animate(
                 '200ms ease-out',
-                style({ opacity: 0, transform: 'translateY(-100%)' })
+                style({ opacity: 0, transform: 'translateY(-100%) scale(.5)' })
               ),
               // ]),
             ],

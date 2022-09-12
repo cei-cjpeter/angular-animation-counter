@@ -1,8 +1,10 @@
 import {
   animate,
   group,
+  keyframes,
   query,
   stagger,
+  state,
   style,
   transition,
   trigger,
@@ -16,26 +18,34 @@ export const DEFAULT_ANIMATION_PERIOD = '1.5s ease-out';
   styleUrls: ['./app.component.css'],
   animations: [
     trigger('counterAnimation', [
-      // transition(':enter, * => 0, * => -1', []),
       transition(':increment', [
         group([
           query(
             ':enter',
             [
-              style({ opacity: 0, transform: 'translateY(100%) scale(.5)' }),
-              // stagger(50, [
+              style({ opacity: 0, transform: 'translateY(100%) scale(1)' }),
               animate(
                 '200ms ease-out',
-                style({ opacity: 1, transform: 'translateY(0%) scale(1)' })
+                keyframes([
+                  style({
+                    opacity: 1,
+                    transform: 'translateY(100%)',
+                    offset: 0.1,
+                  }),
+                  style({
+                    opacity: 1,
+                    transform: 'translateY(0%) scale(2)',
+                    offset: 0.9,
+                  }),
+                  style({ transform: 'scale(1)', offset: 1 }),
+                ])
               ),
-              // ]),
             ],
             { optional: true }
           ),
           query(
             ':leave',
             [
-              // stagger(50, [
               style({
                 opacity: 1,
                 transform: 'translateY(0%) scale(1)',
@@ -43,14 +53,19 @@ export const DEFAULT_ANIMATION_PERIOD = '1.5s ease-out';
               }),
               animate(
                 '200ms ease-out',
-                style({ opacity: 0, transform: 'translateY(-100%) scale(.5)' })
+                keyframes([
+                  style({ transform: 'scale(2)', offset: .2 }),
+                  style({
+                    opacity: 0,
+                    transform: 'translateY(-100%) scale(1)',
+                    offset: 1
+                  }),
+                ])
               ),
-              // ]),
             ],
             { optional: true }
           ),
-        ])
-        
+        ]),
       ]),
       transition(':decrement', [
         group([
@@ -84,7 +99,7 @@ export const DEFAULT_ANIMATION_PERIOD = '1.5s ease-out';
             ],
             { optional: true }
           ),
-        ])
+        ]),
       ]),
     ]),
     trigger('valueUpdated', [

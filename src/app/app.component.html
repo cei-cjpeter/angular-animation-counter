@@ -1,9 +1,9 @@
 <hello name="{{ name }}"></hello>
 <p>Start editing to see some magic happen :)</p>
 
-<div [style.position]="'relative'">
+<div class="container">
   <div [@counterAnimation]="value">
-    <span *ngFor="let value of [value]">{{ value }}</span>
+    <div *ngFor="let value of [value]">{{ value }}</div>
   </div>
   <!-- <div [@valueUpdated]="value">
   <div *ngFor="let value of [ value ]">{{ value }}</div>
